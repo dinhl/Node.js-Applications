@@ -12,7 +12,8 @@
   "dependencies": {
     "env-cmd": "^8.0.2",
     "express": "^4.16.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

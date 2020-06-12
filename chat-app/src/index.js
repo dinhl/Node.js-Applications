@@ -1,17 +1,40 @@
 const express = require('express')
 const path = require('path')
+const http = require('http')
+const socketio = require('socket.io')
+
+const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
+
+const port = process.env.PORT
 const publicDirectoryPath = path.join(__dirname, '../public')
 
-// Setup an Express server
-const app = express()
-const port = process.env.PORT
+app.use(express.static(publicDirectoryPath))
 
-// Create index.html and render the content to the screen
-app.get('/index', (req, res) => {
-    res.sendFile(publicDirectoryPath + '/index.html')    
-})
+let count = 0
 
-// Server listen on port 3000
-app.listen(port, () => {
+// server (emit) -> client (receive) - countUpdated
+// client (emit) -> server (receive) - increment
+
+io.on('connection', (socket) => {
+    console.log('New WebSocket connection')
+
+    // emit an event to the socket
+    socket.emit('countUpdated', count)
+
+    // listen to the event
+    socket.on('increment', () => {
+        count++
+        
+        // emilt an event to a specific connection
+        // socket.emit('countUpdated', count)
+        
+        // emit an event to all connected sockets
+        io.emit('countUpdated', count)
+    })
+} )
+
+server.listen(port, () => {
     console.log(`Server is up on port ${port}!`)    
 })
