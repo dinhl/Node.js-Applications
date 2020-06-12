@@ -11,6 +11,14 @@
 
 * [Path](https://www.npmjs.com/package/path) 
     * The path module provides utilities for working with file and directory paths
+    
+* [env-cmd](https://www.npmjs.com/package/env-cmd)
+    * For executing commands using an environment variables from an env file
+    
+* WEB SOCKET PROTOCOL [socket.io](https://www.npmjs.com/package/socket.io)
+    * socket.io enables real-time bidirectional event-based communication. It consists of:
+        * a Node.js server
+        * a Node.js client
 
 ### Install local (development) dependencies 
 * [Nodemon](https://www.npmjs.com/package/nodemon)
@@ -23,5 +31,6 @@
         "dev": "env-cmd ./config/dev.env nodemon src/index.js"
     },
   
-* Create a "start" script to start the app using node `$ npm run start`
-* Create a "dev" script to start the app using nodemon `$ npm run dev`
+### Execution  
+    * Create a "start" script to start the app using node `$ npm run start`
+    * Create a "dev" script to start the app using nodemon `$ npm run dev`
