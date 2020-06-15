@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const http = require('http')
 const socketio = require('socket.io')
+const Filter = require('bad-words')
 
 const app = express()
 const server = http.createServer(app)
@@ -12,26 +13,35 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
 
-let count = 0
-
-// server (emit) -> client (receive) - countUpdated
-// client (emit) -> server (receive) - increment
-
 io.on('connection', (socket) => {
     console.log('New WebSocket connection')
 
     // emit an event to the socket
-    socket.emit('countUpdated', count)
+    socket.emit('message', 'Welcome!')
+    
+    // emit an event to everybody except itself
+    socket.broadcast.emit('message', 'A new user has joined!')
 
     // listen to the event
-    socket.on('increment', () => {
-        count++
-        
-        // emilt an event to a specific connection
-        // socket.emit('countUpdated', count)
-        
-        // emit an event to all connected sockets
-        io.emit('countUpdated', count)
+    socket.on('sendMessage', (message, callback) => {
+        const filter = new Filter()
+
+        // server filter the bad words
+        if(filter.isProfane(message)){
+            return callback('Profanity is not allowed!')
+        }
+
+        io.emit('message', message)
+        callback()
+    })
+
+    socket.on('sendLocation', (coords, callback) => {
+        io.emit('message', `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
+        callback()
+    })
+
+    socket.on('disconnect', () => {
+        io.emit('message', 'A user has left')
     })
 } )
 

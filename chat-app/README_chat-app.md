@@ -1,7 +1,7 @@
 ### Initialize npm (Create package.json)
 `$ npm init`
 
-### Install global dependencies
+### Installed global dependencies
 * [Express Framework](https://www.npmjs.com/package/express)
     * Express.js is a light-weight Node.js framework used to develop web and mobile app
     * Core features:
@@ -20,11 +20,18 @@
         * a Node.js server
         * a Node.js client
 
-### Install local (development) dependencies 
+* [bad-words](https://www.npmjs.com/package/bad-words)
+    * A javascript filter for badwords
+
+### Installed local (development) dependencies 
 * [Nodemon](https://www.npmjs.com/package/nodemon)
 `$ npm i nodemon --save-dev`
     * Automatically restarting the node app when file changes in the directory are detected
-    
+
+### Applied APIs
+* [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API)
+    * Allowed user to provide their location to web app
+
 ### Set up scripts in package.json
     "scripts": {
         "start": "env-cmd ./config/dev.env node src/index.js",
