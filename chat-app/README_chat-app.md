@@ -40,45 +40,45 @@
 `$ npm init `
 
 #### [Express Framework](https://www.npmjs.com/package/express)
-
-` $ npm i express `
-
 - Express.js is a light-weight Node.js framework used to develop web and mobile app
     - Allowed to set up middleware to respond to HTTP requests
     - Helped organize the web app into a MVC architecture on the server side (from routes, to handling requests and views)
     - Connected with a database like MongoDB with Mongoose (for modeling) to provide a backend for the app
 
+` $ npm i express `
+
+
 #### [Path](https://www.npmjs.com/package/path) 
+- Provided utilities for working with file and directory paths
 
 ` $ npm i path `
 
-- Provided utilities for working with file and directory paths
     
 #### [env-cmd](https://www.npmjs.com/package/env-cmd)
+- Executed commands using environment variables from an env file
 
 ` $ npm i env-cmd`
 
-- Executed commands using environment variables from an env file
 
 #### WEB SOCKET PROTOCOL [socket.io](https://www.npmjs.com/package/socket.io)
-
-` $ npm i socket.io `
-
-#### socket.io enables real-time bidirectional event-based communication. It consists of:
+- socket.io enables real-time bidirectional event-based communication. It consists of:
     - a Node.js server
     - a Node.js client
 
+` $ npm i socket.io `
+
+
 #### [bad-words](https://www.npmjs.com/package/bad-words)
+- A javascript filter for badwords
 
 ` npm i bad-words ` 
 
-- A javascript filter for badwords
 
 #### [Nodemon](https://www.npmjs.com/package/nodemon)
+- Automatically restarting the node app when file changes in the directory are detected
 
 `$ npm i nodemon --save-dev`
 
-- Automatically restarting the node app when file changes in the directory are detected
 
 ## Set up "start" and "dev" scripts in package.json
     "scripts": {
@@ -86,7 +86,7 @@
         "dev": "env-cmd ./config/dev.env nodemon src/index.js"
     },
   
-  
+
 ## Execution  
 `$ npm run dev`
 
